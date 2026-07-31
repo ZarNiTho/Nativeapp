@@ -1,5 +1,4 @@
 import com.google.gms.googleservices.GoogleServicesPlugin.MissingGoogleServicesStrategy
-import java.util.Base64
 
 plugins {
   alias(libs.plugins.android.application)
@@ -32,20 +31,6 @@ android {
       keyAlias = "upload"
       keyPassword = System.getenv("KEY_PASSWORD")
     }
-    create("debugConfig") {
-      val ksFile = file("${rootDir}/debug.keystore")
-      val b64File = file("${rootDir}/debug.keystore.base64")
-      if (!ksFile.exists() && b64File.exists()) {
-        try {
-          val bytes = Base64.getDecoder().decode(b64File.readText().trim())
-          ksFile.writeBytes(bytes)
-        } catch (_: Exception) {}
-      }
-      storeFile = ksFile
-      storePassword = "android"
-      keyAlias = "androiddebugkey"
-      keyPassword = "android"
-    }
   }
 
   buildTypes {
@@ -55,7 +40,8 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
       signingConfig = signingConfigs.getByName("release")
     }
-    debug { signingConfig = signingConfigs.getByName("debugConfig") }
+    debug {
+    }
   }
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_11
