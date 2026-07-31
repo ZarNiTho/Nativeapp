@@ -19,7 +19,7 @@ jobs:
         cache: gradle
 
     - name: Build with Gradle
-      run: gradle assembleDebug
+      run: gradle assembleDebug -Djava.awt.headless=true --no-daemon
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
