@@ -1,0 +1,6 @@
+{
+  "name": "Mobile ANSWER",
+  "description": "Fully native Android phone repair, inventory, financial accounting, and Gemini AI application for Mobile ANSWER service center.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
